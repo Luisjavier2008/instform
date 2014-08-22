@@ -90,18 +90,10 @@
 			<?php 
 				//busqueda
 				if(isset($_POST["query"])){
-					//busca por universidad
-					echo $students;
+
+					echo $students; // table data
 				}
 			 ?>
-			<!-- <tr>
-
-				<td>Luis Javier</td>
-				<td>OyM</td>
-				<td>Activo</td>
-				<td class="danger">Borrar</td>
-				<td class="success"><a href="engine.php?edit=">Editar</a></td>
-			</tr> -->
 		</table>
 	</div>
 

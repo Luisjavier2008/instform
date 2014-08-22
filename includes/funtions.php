@@ -11,9 +11,7 @@ function resultToArray($result){
     {
         $results[] = $row;
     }
-
     return $results;
-
 }
 
 
@@ -28,8 +26,6 @@ function select($from, $colum = "*", $where = NULL){
 	//return $sql;
 	$data = mysqli_query($link,$sql) or die ("Error en la consulta");
 	return $data;
-
-
 }
 
 
@@ -62,7 +58,6 @@ function inserting($into, $colum, $values){
 
 function is_data_rec($data,$msg_true, $msg_false){
 	$index_msg = "location:index.php?msg=";
-	//header($index_msg.$msg_true);
 	if($data){
 		header($index_msg.$msg_true);
 	}else{
@@ -72,9 +67,7 @@ function is_data_rec($data,$msg_true, $msg_false){
 
 function delete_q($from, $where){
 	global $link;
-	//print_r($_GET);
 	$sql = "DELETE FROM ".$from." WHERE " . $where;
-	//echo $sql;
 	$data = mysqli_query($link,$sql) or die ("Error en la consulta");
 	is_data_rec($data,"Estudiante Elimnado Correctamente","Ocurrio un error");
 }
@@ -85,10 +78,7 @@ function update($table, $colums, $where){
 	$sql = "UPDATE ".$table." SET ".$colums." WHERE ".$where;
 	$data = mysqli_query($link,$sql) or die ("Error en la consulta");
 	is_data_rec($data,"Estudiante Editado Correctamente","Ocurrio un error");
-	
 }
-
-
 
 ?>
 

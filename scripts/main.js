@@ -113,7 +113,7 @@ $(document).ready(function(){
 
 
 
-// window.onload = function (){
+
 function confirma(){
 	var r = confirm("Esta seguro que desea eliminar este estudiante?");
 	if (!r) {
@@ -134,5 +134,4 @@ function activaTab(tab){
 	}); 
 };
 	
-// }
 
