@@ -1,11 +1,13 @@
-<?php include 'conexion.php'; 
+<?php
+include 'conexion.php';
 
 ######################### aqui estan todas las funciones ######################### 
 
 
-function resultToArray($row){
+
+function resultToArray($result){
 	$results = array();
-    while($row = mysql_fetch_assoc($result))
+    while($row = mysqli_fetch_assoc($result))
     {
         $results[] = $row;
     }
@@ -17,14 +19,14 @@ function resultToArray($row){
 
 // columna, tabla, columna=valor
 function select($from, $colum = "*", $where = NULL){
-	
+	global $link;
 	if($where != NULL){
 		$sql = "SELECT ".$colum." FROM ".$from." WHERE ".$where;
 	}else{
 		$sql = "SELECT ".$colum." FROM ".$from;
 	}
 	//return $sql;
-	$data = mysql_query($sql) or die ("Error en la consulta");
+	$data = mysqli_query($link,$sql) or die ("Error en la consulta");
 	return $data;
 
 
@@ -33,64 +35,60 @@ function select($from, $colum = "*", $where = NULL){
 
 function grid_query($data){
 	$students = "";
-	while($row = mysql_fetch_array($data)){
+	while($row = mysqli_fetch_array($data)){
 				$students = $students."<tr>
 							<td>$row[nombre]</td>
 							<td>$row[universidad]</td>
 							<td>$row[status]</td>
-							<td class='danger'><a href='engine.php?delete=$row[id]'>Borrar</a></td>
-							<td class='success'><a href='engine.php?edit=$row[id]'>Editar</a></td>
+							<td class='danger' onclick = 'return confirma();'><a href='?delete=$row[id]'>Borrar</a></td>
+							<td class='success'><a href='?edit=$row[id]'>Editar</a></td>
 						</tr>"; 
 	}
-
+	if($students == ""){
+		return "<tr><td colspan='5'>No se encontro ningun resultado</td></tr>";
+	}
 	return  $students;
 }
 
 
 function inserting($into, $colum, $values){
-	
+	global $link;
 	$sql = "INSERT INTO ".$into." (".$colum.") VALUES (".$values.")";
-	$data = mysql_query($sql) or die ("Error en la consulta");
-	is_data_rec("Estudiante Guardado Correctamente","Ocurrio un error");
+	$data = mysqli_query($link,$sql) or die ("Error en la consulta");
+	is_data_rec($data,"Estudiante Guardado Correctamente","Ocurrio un error");
 	
 }
 
 
 function is_data_rec($data,$msg_true, $msg_false){
 	$index_msg = "location:index.php?msg=";
-	header($index_msg.$msg_true);
-	// if($data){
-	// 	header($index_msg.$msg_true);
-	// }else{
-	// 	header($index_msg.$msg_false);
-	// }
+	//header($index_msg.$msg_true);
+	if($data){
+		header($index_msg.$msg_true);
+	}else{
+		header($index_msg.$msg_false);
+	}
 }
 
-function delete($from, $where){
-	
-	$sql = "DELETE FROM ".$from." WHERE".$where;
-
-	try {
-	    $data = mysql_query($sql);
-	    	//or die(""); 
-	} catch (Exception $e) {
-   		echo 'Excepción capturada: ',  $e->getMessage(), "\n";
-		return;
-	}
-
-	return "Succes";
+function delete_q($from, $where){
+	global $link;
+	//print_r($_GET);
+	$sql = "DELETE FROM ".$from." WHERE " . $where;
+	//echo $sql;
+	$data = mysqli_query($link,$sql) or die ("Error en la consulta");
+	is_data_rec($data,"Estudiante Elimnado Correctamente","Ocurrio un error");
 }
 
 
 function update($table, $colums, $where){
-	
+	global $link;
 	$sql = "UPDATE ".$table." SET ".$colums." WHERE ".$where;
-
-	$data = mysql_query($sql) or die ("Error en la consulta");
-	is_data_rec("Estudiante Editado Correctamente","Ocurrio un error");
+	$data = mysqli_query($link,$sql) or die ("Error en la consulta");
+	is_data_rec($data,"Estudiante Editado Correctamente","Ocurrio un error");
 	
 }
 
 
 
 ?>
+

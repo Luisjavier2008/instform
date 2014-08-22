@@ -49,10 +49,10 @@
 							</label>
 							<div class="col-sm-6">
 								<select name="selUniversidad" id="selUniversidad" class="form-control">
-									<option value="">PUCCM</option>
-									<option value="">Utesa</option>
-									<option value="">O&amp;M</option>
-									<option value="">UASD</option>
+									<option>PUCCM</option>
+									<option>Utesa</option>
+									<option>O&amp;M</option>
+									<option>UASD</option>
 								</select>
 							</div>
 							<input type="submit" value="Buscar">
