@@ -1,18 +1,46 @@
 <?php 
+######################### aqui manejo todas las peticiones ###############################
+
 include 'funtions.php';
-if($_POST){
+//Nuevos Estudiantes
+if($_POST){ 
 	if(isset($_POST["new"])){
 		$txtNombre = $_POST["txtNombre"];
 		$selUniversidad = $_POST["selUniversidad"];
 		$txtTelefono = $_POST["txtTelefono"];
 		$txtDireccion = $_POST["txtDireccion"];
-		$txtcorreo = $_POST["txtCorreo"];
+		$txtCorreo = $_POST["txtCorreo"];
 		$txtNota = $_POST["txtNota"];
 		$optionsRadios = $_POST["optionsRadios"];
-		inserting("estudiantes", "`nombre`, `universidad`, `telefono`, `direccion`, `correo`, `nota`, `status`"
-			, "nombre=$txtNombre, universidad=$selUniversidad, telefono=$txtTelefono, direccion=$txtDireccion, correo=$txtCorreo, nota=$txtNota, status=$optionsRadios"
+		inserting("estudiante", "`nombre`, `universidad`, `telefono`, `direccion`, `correo`, `nota`, `status`"
+			, "'$txtNombre', '$selUniversidad', '$txtTelefono', '$txtDireccion', '$txtCorreo', '$txtNota', '$optionsRadios'"
 			);
 	
+	}
+//busqueda
+	if(isset($_POST["query"])){
+		//busca por universidad
+		$students = ""; 
+		if($_POST["optionsRadios"] == "fil	tUni"){
+
+		}
+		else{ //busca por optionsRadios
+			$students = grid_query(select("estudiante", "*", "status = '$_POST[optionsRadios]'"));
+		}
+		//echo $students;
+	
+	}
+
+
+	//filtra los resultados por nombre
+	if(isset($_POST["queryFilter"])){
+		if($_POST["optionsRadios"] = "filtUni"){
+
+		}
+	}
+
+	if(isset($_GET["msg"])){
+			$msg = $_GET["msg"] ;
 	}
 
 }

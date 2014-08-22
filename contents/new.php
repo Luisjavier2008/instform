@@ -1,4 +1,4 @@
-<form action="includes/engine.php" id="formNew" class="form-horizontal" role="form" method="POST">
+<form action="" id="formNew" class="form-horizontal" role="form" method="POST">
 		<div class="col-sm-5">
 			<!-- form data -->
 			<div class="form-group">
@@ -12,10 +12,10 @@
 				<label for="selUniversidad" class="col-sm-3 control-label">Universidad:</label>	
 				<div class="col-sm-8">
 					<select name="selUniversidad" id="selUniversidad" class="form-control">
-						<option value="">PUCCM</option>
-						<option value="">Utesa</option>
-						<option value="">O&M</option>
-						<option value="">UASD</option>
+						<option>PUCCM</option>
+						<option>Utesa</option>
+						<option>O&amp;M</option>
+						<option>UASD</option>
 					</select>
 				</div>
 

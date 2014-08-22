@@ -16,7 +16,7 @@
 						<option value=""></option>
 						<option value="">PUCCM</option>
 						<option value="">Utesa</option>
-						<option value="">O&M</option>
+						<option value="">O&amp;M</option>
 						<option value="">UASD</option>
 					</select>
 				</div>

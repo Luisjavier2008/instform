@@ -1,6 +1,13 @@
 
+activaTab('consultas');
 
-// $('#consultas a').click(function (e) {
-//   e.preventDefault()
-//   $(this).tab('show')
-// })
+// window.onload = function (){
+
+function activaTab(tab){
+	$(document).ready(function(){
+	    $('.nav-tabs a[href="#' + tab + '"]').tab('show');
+	}); 
+};
+	
+// }
+

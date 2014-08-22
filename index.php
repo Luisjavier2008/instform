@@ -1,4 +1,4 @@
-<?php include 'includes/funtions.php'; ?>
+<?php include 'includes/engine.php'; ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,6 +10,12 @@
 	<script src="scripts/jquery.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
 	<script src="scripts/main.js"></script>
+	<?php 
+		if(isset($_GET["msg"])){
+			echo "<script type='text/javascript'>alert('".$_GET["msg"]."');</script>";
+		}
+	?>
+	
 </head>
 <body>
 	<div class="container">

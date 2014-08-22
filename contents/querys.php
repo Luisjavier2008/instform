@@ -1,6 +1,7 @@
+
 <div class="col-sm-7">
 	<div class="row">
-		<form action="forms.php" id="formQuery" class="form-horizontal" role="form" >
+		<form action="" id="formQuery" class="form-horizontal" role="form" method="POST">
 				<!-- form data -->
 				<fieldset>
 						<legend>Buscar Por:</legend>
@@ -50,12 +51,13 @@
 								<select name="selUniversidad" id="selUniversidad" class="form-control">
 									<option value="">PUCCM</option>
 									<option value="">Utesa</option>
-									<option value="">OyM</option>
+									<option value="">O&amp;M</option>
 									<option value="">UASD</option>
 								</select>
 							</div>
 							<input type="submit" value="Buscar">
 						</div>
+						<input type="hidden" name="query">
 							
 					</fieldset>
 		
@@ -73,7 +75,7 @@
 				</div>
 					<input type="submit" value="Filtrar">
 			</div>	
-				
+			<input type="hidden" name="queryFilter">
 		</form>
 	</div>
 
@@ -84,22 +86,22 @@
 				<th>Universidad</th>
 				<th>Status</th>
 				<th colspan="2">Accion</th>
-			</tr>
-			<tr>
-				<td>Luis Javier</td>
-				<td>OyM</td>
-				<td>Activo</td>
-				<td class="danger">Borrar</td>
-				<td class="success">Editar</td>
-			</tr>		
+			</tr>	
+			<?php 
+				//busqueda
+				if(isset($_POST["query"])){
+					//busca por universidad
+					echo $students;
+				}
+			 ?>
+			<!-- <tr>
 
-			<tr>
 				<td>Luis Javier</td>
 				<td>OyM</td>
 				<td>Activo</td>
 				<td class="danger">Borrar</td>
 				<td class="success"><a href="engine.php?edit=">Editar</a></td>
-			</tr>
+			</tr> -->
 		</table>
 	</div>
 
